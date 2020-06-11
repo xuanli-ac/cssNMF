@@ -27,11 +27,11 @@ function [H,S,objhistory]= css_nmf( V, rdim, b,maxiter,tolvalue, fname, showflag
 % matrices of size n*n for factorization, n:# of nodes; m:# of subjects
 % 2. rdim is the desired number of clusters/communities, i.e. the reduced
 % rank
-% 3. b: parameter to control the sparseness
-% 4. maxiter: the maximum times of iterations
-% 5. tolvalue: iteration ends if stepsizeH<tolvalue.
-% 6. fname is the file name to be saved
-% 7. showflag: 1 or 0. 1: show figures of convergence
+% 3. b: parameter to control the sparseness. Default:0.1
+% 4. maxiter: the maximum times of iterations. Default:5000
+% 5. tolvalue: iteration ends if stepsizeH<tolvalue. Default: 1e-14
+% 6. fname is the file name to be saved. Default:'test'
+% 7. showflag: 1 or 0. 1: show figures of convergence. Default: 0.
 
 % Output:
 % H is a n*rdim matrix, representing the group-level membership matrix
@@ -45,6 +45,25 @@ function [H,S,objhistory]= css_nmf( V, rdim, b,maxiter,tolvalue, fname, showflag
 %by Xuan Li, 2016/11/08
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% Check input arguments
+if nargin<2,
+    error('Please input Association matrices and the desired rank.');
+end
+if nargin<3,
+    b=0.1;
+end
+if nargin<4,
+    maxiter=5000;
+end
+if nargin<5,
+    tolvalue=1e-14;
+end
+if nargin<6,
+    fname='test';
+end
+if nargin<7,
+    showflag=0;
+end
 
 %% Check data
 Nsub=length(V);
