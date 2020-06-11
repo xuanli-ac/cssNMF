@@ -23,13 +23,13 @@ function [H,S,objhistory]= css_nmf( V, rdim, b,maxiter,tolvalue, fname, showflag
 
 
 % Input:
-% 1. V should be a m*1 cell including a batch of non-negative symmetric
+% 1. V is a m*1 cell including a batch of non-negative symmetric
 % matrices of size n*n for factorization, n:# of nodes; m:# of subjects
 % 2. rdim is the desired number of clusters/communities, i.e. the reduced
 % rank
 % 3. b: parameter to control the sparseness
 % 4. maxiter: the maximum times of iterations
-% 5. tolvalue: criterion to end iteration
+% 5. tolvalue: iteration ends if stepsizeH<tolvalue.
 % 6. fname is the file name to be saved
 % 7. showflag: 1 or 0. 1: show figures of convergence
 
@@ -81,7 +81,7 @@ objhistory=cal_objval(V,S,H,b);
 %% Initialize displays
 if showflag,
     figure(1); clf; % this will show the energies and sparsenesses
-    figure(2); clf; % this will show the objective function
+    figure(2); clf; % this will show the objective function value
     drawnow;
 end
 
