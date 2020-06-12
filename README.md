@@ -1,4 +1,4 @@
-# collective sparse symmetric non-negative matrix factorization（cssNMF）
+# Collective sparse symmetric non-negative matrix factorization（cssNMF）
 >Matlab code for overlapping community detection in brain functional network
 
 The cssNMF method is a NMF-based technique, designed to detect the overlapping community structure in brain functional networks. Given a batch of non-negative and symmetric association/similarity matrices, cssNMF collectively tri-factorizes these matrices in a symmetric way, into a membership matrix H and a weight matrix S. Each column of H represent a group-level component/community, where each element H_ij indicates the importance of feature i in component j. Each element S_ij represents the strength of component i in the representation of the j-th association matrix. 
